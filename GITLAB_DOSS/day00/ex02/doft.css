@@ -62,7 +62,7 @@ img {
 
 .img_left {
 	margin:0 auto;
-	width:60%;
+	width:55%;
 }
 
 .rectangle_middle {
@@ -110,25 +110,63 @@ img {
 .green_rectangle {
 	position:absolute;
 	background-color:#87FE89;
-	width:25%;
-	height:18%;
+	width:24%;
+	height:17%;
 	top:78%;
-	left:13%;
+	left:14%;
 	border-radius: 25px;
 	box-shadow: 17px 15px 12px #010101;
 }
 
 .normal_txt {
-	display:inline-block;
+	font-family: Georgia;
+	font-size: 22;
+	margin-left: 3%;
+	margin-top: 0.1%
 }
 
 .big_txt {
-	font-size:50;
-	display:inline-block;
+	font-size:45;
 }
 
 .shadow_txt {
 	display:inline-block;
+	text-shadow: 5px 5px  4px red;
+}
+.italic_txt {
+	font-family: Georgia;
+	font-size: 22;
+	font-style: italic;
+	margin-left: 3%;
+	margin-top: -3%;
+}
 
-	text-shadow: 2px 2px red;
+.form_area {
+	margin-top: -3%;
+	margin-left: 3%;
+}
+
+#input_txt {
+	width: 75%;
+	border: 2px solid #C1CCBF;
+}
+
+#form_button {
+	font-size: 15;
+}
+
+.ikea_zone {
+	position:absolute;
+	width: 3%;
+	height: 9%;
+	left: 42%;
+	bottom: 28%;
+}
+
+.apple_zone {
+	position:absolute;
+	width: 9%;
+	height: 11%;
+	left: 65%;
+	bottom: 28%;
 }
