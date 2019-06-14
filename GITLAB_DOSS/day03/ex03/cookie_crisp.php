@@ -1,24 +1,17 @@
 <?php
-if ($_GET)
+if ($_GET['action'] && $_GET['name'])
 {
-	foreach ($_GET as $name => $value)
-		setcookie($name, $value, time() + 3600);
-}
-if ($_COOKIE)
-{
-	foreach ($_COOKIE as $cookie => $cookie_value)
+	if ($_GET['action'] == "set"  && $_GET['value'])
 	{
-		$i = 0;
-		foreach ($_GET as $get => $get_value)
-		{
-			if ($cookie == $get)
-				$i = 1;
-		}
-		if ($i == 0)
-		{
-			echo "$cookie_value\n";
-			setcookie($cookie, "$cookie_value", time() - 3600);
-		}
+		setcookie($_GET['name'], $_GET['value'], time() + 3600);
+	}
+	else if ($_GET['action'] == "get" && isset($_COOKIE[$_GET['name']]))
+	{
+		echo $_COOKIE[$_GET['name']]."\n";
+	}
+	if ($_GET['action'] == "del")
+	{
+		setcookie($_GET['name']);
 	}
 }
 ?>
