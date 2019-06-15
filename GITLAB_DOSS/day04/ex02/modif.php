@@ -59,22 +59,43 @@ function change_passwd()
 
 if ($_POST && isset($_POST['submit']) && $_POST['submit'] == "OK")
 {
-	if (isset($_POST['login']) == 0)
+	if (!isset($_POST['login']))
+		error();
+	if ($_POST['login'] == "")
 		error();
 	if (file_exists("../htdocs/private") === FALSE)
+	{
+		if (!isset($_POST['passwd']))
+			error();
+		if ($_POST['passwd'] == "")
+			error();
 		mkdir("../htdocs/private");
+		$res[] = array("login" => $_POST['login'], "passwd" => hash('whirlpool', $_POST['passwd']));
+		file_put_contents("../htdocs/private/passwd", serialize($res));
+
+	}
 	else if (file_exists("../htdocs/private/passwd") === TRUE)
 	{
-		if (isset($_POST['passwd']) && isset($_POST['oldpw']) == 0 && isset($_POST['newpw']) == 0)
-			merge_passwd();
-		else if (isset($_POST['oldpw']) && isset($_POST['newpw']) && isset($_POST['passwd']) == 0)
-			change_passwd();
-		else
-			error();
+		if (isset($_POST['passwd']) && !isset($_POST['oldpw']) && !isset($_POST['newpw']))
+		{
+			if ($_POST['passwd'] != "")
+				merge_passwd();
+			else
+				error();
+		}
+		else if (isset($_POST['oldpw']) && isset($_POST['newpw']) && !isset($_POST['passwd']))
+		{
+			if ($_POST['oldpw'] != "" && $_POST['newpw'] != "")
+				change_passwd();
+			else
+				error();
+		}
 	}
-	else if (isset($_POST['passwd']) && isset($_POST['oldpw']) == 0 && isset($_POST['newpw']) == 0)
+	else if (isset($_POST['passwd']) && !isset($_POST['oldpw']) && !isset($_POST['newpw']))
 	{
-			$res[] = array("login" => $_POST['login'], "passwd" => hash('whirlpool', $_POST['passwd']));
+		if ($_POST['passwd'] == "")
+			error();
+		$res[] = array("login" => $_POST['login'], "passwd" => hash('whirlpool', $_POST['passwd']));
 			file_put_contents("../htdocs/private/passwd", serialize($res));
 	}
 	else

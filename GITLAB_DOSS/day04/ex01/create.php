@@ -31,13 +31,23 @@ function merge_passwd()
 
 if ($_POST && isset($_POST['submit']) && $_POST['submit'] == "OK")
 {
-	if (isset($_POST['login']) == 0 || isset($_POST['passwd']) == 0)
+	if (!isset($_POST['login']) || !isset($_POST['passwd']))
+	{
+		echo "ERROR\n";
+		exit;
+	}
+	else if ($_POST['login'] == "" || $_POST['passwd'] == "")
 	{
 		echo "ERROR\n";
 		exit;
 	}
 	if (file_exists("../htdocs/private") === FALSE)
+	{
 		mkdir("../htdocs/private");
+		$res[] = array("login" => $_POST['login'], "passwd" => hash('whirlpool', $_POST['passwd']));
+		file_put_contents("../htdocs/private/passwd", serialize($res));
+
+	}
 	else if (file_exists("../htdocs/private/passwd") === TRUE)
 	{
 		merge_passwd();
