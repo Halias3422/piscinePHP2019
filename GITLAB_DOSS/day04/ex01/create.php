@@ -15,8 +15,8 @@ function find_already_existing_account($res)
 
 function merge_passwd()
 {
-	$poulet = file_get_contents("../htdocs/private/passwd");
-	$res = unserialize($poulet);
+	$file = file_get_contents("../htdocs/private/passwd");
+	$res = unserialize($file);
 	if (find_already_existing_account($res) == 0)
 	{
 		echo "ERROR\n";
@@ -29,9 +29,9 @@ function merge_passwd()
 	}
 }
 
-if ($_POST && $_POST['submit'] == "OK")
+if ($_POST && isset($_POST['submit']) && $_POST['submit'] == "OK")
 {
-	if (!$_POST['login'] || !$_POST['passwd'])
+	if (isset($_POST['login']) == 0 || isset($_POST['passwd']) == 0)
 	{
 		echo "ERROR\n";
 		exit;
