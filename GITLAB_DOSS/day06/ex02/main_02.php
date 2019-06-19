@@ -26,7 +26,7 @@ $vtxZ = new Vertex( array( 'x' => 0.0, 'y' => 0.0, 'z' => 1.0 ) );
 $vtcXunit = new Vector( array( 'orig' => $vtxO, 'dest' => $vtxX ) );
 $vtcYunit = new Vector( array( 'orig' => $vtxO, 'dest' => $vtxY ) );
 $vtcZunit = new Vector( array( 'orig' => $vtxO, 'dest' => $vtxZ ) );
-/*
+
 print( $vtcXunit . PHP_EOL );
 print( $vtcYunit . PHP_EOL );
 print( $vtcZunit . PHP_EOL );
@@ -55,5 +55,5 @@ print( 'cross product of $vtc1 and $vtc2 is ' . $vtc1->crossProduct( $vtc2 ) . P
 print( 'cross product of $vtcXunit and $vtcYunit is ' . $vtcXunit->crossProduct( $vtcYunit ) . 'aka $vtcZunit' . PHP_EOL );
 print( 'cosinus of angle between $vtc1 and $vtc2 is ' . $vtc1->cos( $vtc2 ) . PHP_EOL );
 print( 'cosinus of angle between $vtcXunit and $vtcYunit is ' . $vtcXunit->cos( $vtcYunit ) . PHP_EOL );
- */
+
 ?>

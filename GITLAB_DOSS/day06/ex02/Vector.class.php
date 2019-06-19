@@ -8,6 +8,7 @@ Class Vector
 	private $_y;
 	private $_z;
 	private $_w = 1.0;
+	private $magnitude;
 	public static $verbose = FALSE;
 
 	public function __construct(array $tab)
@@ -42,24 +43,34 @@ Class Vector
 
 	public function __toString()
 	{
-		$res = sprintf("Vector( x:%.2f, y:%.2f, z:%.2f, w:%.2f)", $this->_x, $this->_y, $this->_z, $this->_y);
+		$res = sprintf("Vector( x:%.2f, y:%.2f, z:%.2f, w:%.2f)", $this->_x, $this->_y, $this->_z, $this->_w);
 		return ($res);
 	}
 
 	public function magnitude()
 	{
-		//	return (sqrt(($this->_dest['x'] - $this->_orig['x']) ** 2) + (($this->_dest['y'] - $this->_orig['y']) ** 2) + (($this->_dest['z'] - $this->_orig['z'] ** 2)));
-		return (sqrt($this->_x ** 2 + $this->_y ** 2 + $this->_z ** 2));
+		$this->magnitude = sqrt($this->_x ** 2 + $this->_y ** 2 + $this->_z ** 2);
+		return ($this->magnitude);
 	}
 
 	public function normalize()
 	{
-	
+		
+		echo "magnitude a nous ==?>> ".$this->magnitude."\n)";
+		if ($this->magnitude == 1)
+		{
+			echo "coucou\n";
+			return (new Vector(array('x' => $this->_x, 'y' => $this->_y, 'z' => $this->_z)));
+		}
+		$this->_x = $this->_x / $this->magnitude();
+		$this->_y = $this->_y / $this->magnitude();
+		$this->_z = $this->_z / $this->magnitude();
+		return ($this);
 	}
 
 	public function add($rhs)
 	{
-	
+		return ($rhs['dest']->_x + $rhs['orig']->y, $rhs['dest']->_x
 	}
 
 	public function sub($rhs)
