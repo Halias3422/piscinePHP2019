@@ -70,13 +70,42 @@ Class Vector
 
 	public function add($rhs)
 	{
-		return ($rhs['dest']->_x + $rhs['orig']->y, $rhs['dest']->_x
+		return ($vector(array(
+			'x' => $rhs['dest']->_x + $rhs['orig']->x,
+			'y' => $rhs['dest']->_y + $rhs['orig']->y,
+			'z' => $rhs['dest']->_z + $rhs['orig']->_z
+		)));
 	}
 
 	public function sub($rhs)
 	{
-	
+			return ($vector(array(
+			'x' => $rhs['dest']->_x - $rhs['orig']->x,
+			'y' => $rhs['dest']->_y - $rhs['orig']->y,
+			'z' => $rhs['dest']->_z - $rhs['orig']->_z
+		)));
 	}
+
+	public function opposite()
+	{
+		$swap = $this['dest']->_x;
+		$this['dest']->_x = $this['orig']->_x;
+		$this['orig']->_x = $swap;
+		$swap = $this['dest']->_y;
+		$this['dest']->_y = $this['orig']->_y;
+		$this['orig']->_y = $swap;
+		$swap = $this['dest']->_z;
+		$this['dest']->_z = $this['orig']->_z;
+		$this['orig']->_z = $swap;
+		return ($vector(array(
+			'x' => $this['dest']
+	}
+
+	public function scalarProduct($k)
+	{
+		
+	}
+
 	public static function doc()
 	{
 		$doc = file_get_contents("./Vector.doc.txt");
