@@ -1,0 +1,12 @@
+<- Vertex ----------------------------------------------------------------------
+The Vertex class handles Vertex.
+
+The vertex is very simple. It is used to encapsulate the vortex's coordinates
+and gives reading and writing rights to its attributes.
+
+An insctance can be constructed as:
+Vertex(x: -.--, y:-.--, z:-.--, w:-.--)
+or:
+Vertex(x: -.--, y:-.--, z:-.--, w:-.--, Color())
+(cf Color class).
+---------------------------------------------------------------------- Vertex ->
