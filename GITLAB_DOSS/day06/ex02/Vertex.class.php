@@ -2,36 +2,34 @@
 
 require_once("./Color.class.php");
 
-Class Vertex
+class Vertex
 {
 	private $_x;
 	private $_y;
 	private $_z;
-	private $_w;
+	private $_w = 1.0;
 	private $_color;
-	public static $verbose = false;
+	static $verbose = false;
 
 	public function __construct(array $tab)
 	{
-		if (array_key_exists('x', $tab) && array_key_exists('y', $tab) && array_key_exists('z', $tab))
+		if (isset($tab['x']) && isset($tab['y']) && isset($tab['z']))
 		{
 			$this->_x = $tab['x'];
 			$this->_y = $tab['y'];
 			$this->_z = $tab['z'];
-			if (array_key_exists('w', $tab))
-				$this->_w = $tab['w'];
-			else
-				$this->_w = 1.0;
-			if (array_key_exists('color', $tab))
-				$this->_color = $tab['color'];
-			else
-				$this->_color = new Color(array( 'red' => 255, 'green' =>  255, 'blue' => 255 ));
-			if (self::$verbose == true)
-			{
-				echo "$this ";
-				print( $_color );
-				echo ") constructed\n";
-			}
+		}
+		if (isset($tab['w']))
+			$this->_w = $tab['w'];
+		if (isset($tab['color']))
+			$this->_color = $tab['color'];
+		else
+			$this->_color = new Color(array( 'red' => 255, 'green' =>  255, 'blue' => 255 ));
+		if (self::$verbose == true)
+		{
+			echo "$this ";
+			print( $_color );
+			echo ") constructed\n";
 		}
 	}
 
@@ -64,44 +62,70 @@ Class Vertex
 
 		return $ret;
 	}
-	public function setx()
+
+	public function __get( $attr )
 	{
-		return $this->_x;
-	}
-	public function sety()
-	{
-		return $this->_y;
-	}
-	public function setz()
-	{
-		return $this->_z;
-	}
-	public function setw()
-	{
-		return $this->_w;
-	}
-	public function setcolor()
-	{
-		return $this->_color;
+		if ( $attr == _x )
+			return ( $this->getX() );
+		else if ( $attr == _y )
+			return ( $this->getY() );
+		else if ( $attr == _z )
+			return ( $this->getZ() );
+		else if ( $attr == _w )
+			return ( $this->getW() );
+		else if ( $attr == _color )
+			return ( $this->getColor() );
 	}
 
-	public function getx()
+	public function __set( $attr, $value )
+	{
+		if ( $attr == _x )
+			return ( $this->getX( $value ) );
+		else if ( $attr == _y )
+			return ( $this->getY( $value ) );
+		else if ( $attr == _z )
+			return ( $this->getZ( $value ) );
+		else if ( $attr == _w )
+			return ( $this->getW( $value ) );
+		else if ( $attr == _color )
+			return ( $this->getColor( $value ) );
+	}
+
+	private function setX ( $value ) {
+		$this->_x = $value;
+	}
+	private function setY ( $value ) {
+		$this->_y = $value;
+	}
+	private function setZ ( $value ) {
+		$this->_z = $value;
+	}
+	private function setW ( $value ) {
+		$this->_x = $value;
+	}
+	private function setColor ( $value ) {
+		$this->_x = $value;
+	}
+
+
+
+	private function getX()
 	{
 		return $this->_x;
 	}
-	public function gety()
+	private function getY()
 	{
 		return $this->_y;
 	}
-	public function getz()
+	private function getZ()
 	{
 		return $this->_z;
 	}
-	public function getw()
+	private function getW()
 	{
 		return $this->_w;
 	}
-	public function getcolor()
+	private function getColor()
 	{
 		return $this->_color;
 	}	
