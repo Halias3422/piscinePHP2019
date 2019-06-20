@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+	<body>
+		<form action="calc.html" id="form" onsubmit="nombres()">
+			<input type="text"/>
+			<select>
+				<option value="plus">+</option>
+				<option value="minus">-</option>
+				<option value="multiply">*</option>
+				<option value="divide">/</option>
+				<option value="modulo">%</option>
+			</select>
+			<input type="text"/>
+			<input type="submit" value="Try me!"/>
+		</form>
+		<script>
+setInterval("alert('Please, use me...')", 30000);
+function nombres()
+{
+	var inputs = document.getElementById('form');
+	var nb1 = parseInt(inputs[0].value);
+	var op = inputs[1].value;
+	var nb2 = parseInt(inputs[2].value);
+	var res;
+	if (isNaN(nb1) || isNaN(nb2))
+		alert("Error :(");
+	else if (nb2 < 0 || nb1 < 0)
+		alert("Error :(");
+	else
+	{
+		console.log(op);
+		if (op == 'plus')
+			res = nb1 + nb2;
+		else if (op == 'minus')
+			res = nb1 - nb2;
+		else if (op == 'multiply')
+			res = nb1 * nb2;
+		else if (op == 'divide' && nb2 != 0)
+			res = nb1 / nb2;
+		else if (op == 'modulo' && nb2 != 0)
+			res = nb1 % nb2;
+		if ((op == 'modulo' || op == 'divide') && nb2 == 0)
+			alert("It's over 9000!");
+		else
+		{
+			console.log(res);
+			alert(res);
+		}
+	}
+}
+		</script>
+	</body>
+</html>
