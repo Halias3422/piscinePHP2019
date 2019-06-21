@@ -32,10 +32,11 @@ function Onload_cookie(cook)
 	new_div.setAttribute("onclick", "delete_node(this.id, this)");
 	new_div.setAttribute("id", "child"+nb_nodes);
 	var value = cook.split("=");
+	document.cookie = value[0]+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+	document.cookie = "child"+nb_nodes+"="+value[1];
 	new_div.appendChild(document.createTextNode(value[1]));
 	mother.insertBefore(new_div, mother.childNodes[0]);
 	console.log("nb_nodes = "+ nb_nodes);
-	document.cookie = "child"+nb_nodes+"="+value[1];
 	var cook = document.cookie;
 }
 
