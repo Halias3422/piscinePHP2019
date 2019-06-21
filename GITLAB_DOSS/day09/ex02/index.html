@@ -1,27 +1,40 @@
 <!DOCTYPE HTML>
-
 <html>
 	<head>
-	<style>
-		#ft_list > div {
-			width: 50%;
-			height:50%;
-			background-color: red;
+		<style>
+#ft_list > div {
+	width: 50%;
+	height:30px;
+	background-color: #696969;
+	text-align:center;
+	border-radius:25% 200px;
+	margin: 0 auto;
+	margin-top:15px;
+	line-height:30px;
+	font-family:Courier New;
+	font-weight:Bold;
+	border:1px ridge black;
+	color:white;
+}
+		.submit {
+			text-align:center;
+			width:25%;
+			margin-top:200px;
 		}
-		.baby_div {
-			width:5%;
-			height: 10%;
+		form {
+			text-align:center;
+			width:100%;
 		}
-
-	</style>
+		</style>
 	</head>
-	<body>
+	<body onload="getCookies()">
+		<form class="form" action="">
+			<input class="submit" type="button" value="New" onClick="PromptMessage()"/>
+		</form>
 		<div id="ft_list">
 			<form action="">
-				<input type="button" value="New" onClick="PromptMessage()"/>
 				<script type="text/javascript" src="./todo.js"></script>
 			</form>
-
 		</div>
 	</body>
 </html>
