@@ -17,12 +17,12 @@
 		</div>
 		<script type="text/javascript">
 var elem = document.getElementById("balloon");
-elem.addEventListener("mouseout", ohhhhhhh, false);
-elem.addEventListener("click", gonfler, false);
-function gonfler()
+elem.addEventListener("mouseout", deflate, false);
+elem.addEventListener("click", inflate, false);
+function inflate()
 {
 	var element = document.getElementById("balloon");
-	if (element.style.width < '420px')
+	if (element.style.width <= '410px')
 	{
 		element.style.width = element.offsetWidth+10+'px';
 		element.style.height = element.offsetHeight+10+'px';
@@ -39,7 +39,7 @@ function gonfler()
 	else if (element.style.backgroundColor == 'blue')
 			element.style.backgroundColor = 'red';
 }
-function ohhhhhhh()
+function deflate()
 {
 	var element = document.getElementById("balloon");
 	if (element.style.width > '200px')

@@ -5,15 +5,51 @@
 	margin: 0 auto;
 	width: 200px;
 	height: 200px;
-	background-Color: red;
+	background-color: red;
 	border-radius: 50%;
 }
 		</style>
 	</head>
 	<body>
 	<div id="balloon">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js">
-			
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+			<script>
+			$(document).ready(function()
+			{
+				$('#balloon').click(function()
+				{
+					var widt = $('#balloon').width();
+					$('#balloon').css('width', '+=10px');
+					$('#balloon').css('height', '+=10px');
+					widt += 10;
+					if ($('#balloon').css('background-color') == 'rgb(255, 0, 0)')
+						$('#balloon').css('background-color', 'green');
+					else if ($('#balloon').css('background-color') == 'rgb(0, 128, 0)')
+						$('#balloon').css('background-color', 'blue');
+					else if ($('#balloon').css('background-color') == 'rgb(0, 0, 255)')
+						$('#balloon').css('background-color', 'red');
+					if (widt > 420)
+					{
+						$('#balloon').width('200px');
+						$('#balloon').height('200px');
+					}
+				})
+				$('#balloon').mouseleave(function()
+				{
+					var widt = $('#balloon').width();
+					if (widt >= 205)
+					{
+					$('#balloon').css('width', '-=5px');
+					$('#balloon').css('height', '-=5px');
+					}
+					if ($('#balloon').css('background-color') == 'rgb(255, 0, 0)')
+						$('#balloon').css('background-color', 'blue');
+					else if ($('#balloon').css('background-color') == 'rgb(0, 128, 0)')
+						$('#balloon').css('background-color', 'red');
+					else if ($('#balloon').css('background-color') == 'rgb(0, 0, 255)')
+						$('#balloon').css('background-color', 'green');
+				})
+			});
 		</script>
 	</div>
 	</body>

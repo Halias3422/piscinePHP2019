@@ -28,7 +28,6 @@ function nombres()
 		alert("Error :(");
 	else
 	{
-		console.log(op);
 		if (op == 'plus')
 			res = nb1 + nb2;
 		else if (op == 'minus')
@@ -40,7 +39,10 @@ function nombres()
 		else if (op == 'modulo' && nb2 != 0)
 			res = nb1 % nb2;
 		if ((op == 'modulo' || op == 'divide') && nb2 == 0)
+		{
+			console.log("It's over 9000!");
 			alert("It's over 9000!");
+		}
 		else
 		{
 			console.log(res);
