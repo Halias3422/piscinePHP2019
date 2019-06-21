@@ -19,7 +19,6 @@ function delete_node(id, object)
 {
 	if (!confirm("Are you sure you want to delete this task ?"))
 		return;
-	console.log("ICI="+id);
 	document.cookie = id + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 	object.parentNode.removeChild(object);
 	console.log("deleting node");

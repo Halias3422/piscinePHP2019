@@ -2,8 +2,8 @@
 	<head>
 	</head>
 	<body>
-		<form action="calc.html" id="form" onsubmit="nombres()">
-			<input type="text" id="nb1"/>
+		<form action="calc.html" id="form">
+			<input type="text" name="nb1"/>
 			<select name="op">
 				<option value="plus">+</option>
 				<option value="minus">-</option>
@@ -16,9 +16,39 @@
 		</form>
 		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 		<script>
-			var num1 = $('#nb1').val();
-
-//			$("#form").text("moncul");
+setInterval("alert('Please, use me...')", 30000);
+$('#form').submit(function() {
+	var nb1 = parseInt ($("input[name=nb1]").val(), 10);
+	var op = $("select[name=op]").val();
+	var nb2 = parseInt ($("input[name=nb2]").val(), 10);
+	if (isNaN(nb1) || isNaN(nb2))
+		alert("Error :(");
+	else if (nb2 < 0 || nb1 < 0)
+		alert("Error :(");
+	else
+	{
+		if (op == 'plus')
+			res = nb1 + nb2;
+		else if (op == 'minus')
+			res = nb1 - nb2;
+		else if (op == 'multiply')
+			res = nb1 * nb2;
+		else if (op == 'divide' && nb2 != 0)
+			res = nb1 / nb2;
+		else if (op == 'modulo' && nb2 != 0)
+			res = nb1 % nb2;
+		if ((op == 'modulo' || op == 'divide') && nb2 == 0)
+		{
+			console.log("It's over 9000!");
+			alert("It's over 9000!");
+		}
+		else
+		{
+			console.log(res);
+			alert(res);
+		}
+	}
+});
 		</script>
 	</body>
 </html>
