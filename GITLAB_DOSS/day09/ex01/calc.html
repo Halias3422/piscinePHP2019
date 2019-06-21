@@ -18,16 +18,23 @@ setInterval("alert('Please, use me...')", 30000);
 function nombres()
 {
 	var inputs = document.getElementById('form');
-	var nb1 = parseInt(inputs[0].value);
+	var nb1 = inputs[0].value;
 	var op = inputs[1].value;
-	var nb2 = parseInt(inputs[2].value);
+	var nb2 = inputs[2].value;
 	var res;
 	if (isNaN(nb1) || isNaN(nb2))
 		alert("Error :(");
-	else if (nb2 < 0 || nb1 < 0)
+	else if (!nb1 || !nb2 || nb1 == "" || nb2 == "")
 		alert("Error :(");
 	else
 	{
+		var nb1 = parseInt(inputs[0].value);
+		var nb2 = parseInt(inputs[2].value);
+		if (nb2 < 0 || nb1 < 0)
+		{
+			alert("Error :(");
+			return;
+		}
 		if (op == 'plus')
 			res = nb1 + nb2;
 		else if (op == 'minus')

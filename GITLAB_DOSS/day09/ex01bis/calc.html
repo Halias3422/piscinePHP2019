@@ -18,15 +18,22 @@
 		<script>
 setInterval("alert('Please, use me...')", 30000);
 $('#form').submit(function() {
-	var nb1 = parseInt ($("input[name=nb1]").val(), 10);
+	var nb1 = $("input[name=nb1]").val();
 	var op = $("select[name=op]").val();
-	var nb2 = parseInt ($("input[name=nb2]").val(), 10);
+	var nb2 = $("input[name=nb2]").val();
 	if (isNaN(nb1) || isNaN(nb2))
 		alert("Error :(");
-	else if (nb2 < 0 || nb1 < 0)
+	else if (!nb1 || !nb2 || nb1 == "" || nb2 == "")
 		alert("Error :(");
 	else
 	{
+		var nb1 = parseInt($("input[name=nb1]").val(), 10);
+		var nb2 = parseInt($("input[name=nb2]").val(), 10);
+		if (nb2 < 0 || nb1 < 0)
+		{
+			alert("Error :(");
+			return;
+		}
 		if (op == 'plus')
 			res = nb1 + nb2;
 		else if (op == 'minus')
